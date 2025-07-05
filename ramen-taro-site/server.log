@@ -1,0 +1,90 @@
+
+> ramen-taro-site@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.11.6:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1861ms
+ ○ Compiling / ...
+ ✓ Compiled / in 9.6s
+ GET / 200 in 10417ms
+ GET / 200 in 337ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 887ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 1226ms
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 5.1s
+ GET /blog 200 in 5480ms
+Error: Route "/blog/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at BlogPostPage (src/app/blog/[slug]/page.tsx:111:36)
+  109 |
+  110 | export default async function BlogPostPage({ params }: PageProps) {
+> 111 |   const post = await getPost(params.slug);
+      |                                    ^
+  112 |   
+  113 |   if (!post) {
+  114 |     notFound();
+ GET /blog/post-1 200 in 6071ms
+ GET /blog 200 in 593ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 1240ms
+ GET /profile 404 in 1312ms
+ GET /profile 404 in 134ms
+ GET /blog 200 in 1200ms
+ GET /profile 404 in 96ms
+ GET /profile 404 in 137ms
+ GET /blog 200 in 1000ms
+ GET / 200 in 149ms
+ ✓ Compiled in 229ms
+ GET / 200 in 155ms
+ ✓ Compiled in 311ms
+ ✓ Compiled / in 76ms
+ GET / 200 in 481ms
+ ✓ Compiled in 411ms
+ ✓ Compiled in 317ms
+ GET / 200 in 602ms
+ ✓ Compiled in 423ms
+ ✓ Compiled / in 139ms
+ GET / 200 in 634ms
+ ✓ Compiled in 225ms
+ ✓ Compiled / in 85ms
+ GET / 200 in 399ms
+ ✓ Compiled in 324ms
+ ✓ Compiled / in 87ms
+ GET / 200 in 434ms
+ ○ Compiling /profile ...
+ ✓ Compiled /profile in 2.7s
+ GET /profile 200 in 2939ms
+ GET /blog 200 in 775ms
+ GET / 200 in 157ms
+ GET /profile 200 in 148ms
+ GET /blog 200 in 588ms
+ GET / 200 in 213ms
+ ✓ Compiled /blog/[slug] in 110ms
+ GET /blog/post-2 200 in 1286ms
+ GET /blog/post-1 200 in 689ms
+ GET /blog/post-3 200 in 521ms
+ GET / 200 in 360ms
+ ✓ Compiled in 172ms
+ ✓ Compiled in 260ms
+ ✓ Compiled / in 73ms
+ GET / 200 in 357ms
+ GET / 200 in 157ms
+ GET / 200 in 181ms
+ GET / 200 in 151ms
+ ○ Compiling /studio/[[...tool]] ...
+ ✓ Compiled /studio/[[...tool]] in 30.9s
+ GET /studio 200 in 36941ms
+ GET /studio 200 in 309ms
+ GET /studio 200 in 408ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 364ms
+ GET /studio 200 in 338ms
+ GET /studio 200 in 329ms
+ GET /studio 200 in 439ms
+ GET /studio 200 in 391ms
+ GET /studio 200 in 524ms
+ GET /studio 200 in 381ms
