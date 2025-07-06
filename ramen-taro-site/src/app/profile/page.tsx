@@ -177,22 +177,43 @@ export default function ProfilePage() {
       </section>
 
       {/* SNSリンクセクション */}
-      <section className="py-16 bg-slate-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-8">Let's Connect</h2>
-          <div className="flex justify-center space-x-6">
+      <section className="relative py-20 bg-gradient-to-br from-slate-800 via-indigo-900 to-slate-800 overflow-hidden">
+        {/* 背景エフェクト */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mix-blend-multiply filter blur-2xl animate-blob"></div>
+          <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-6 animate-gradient">
+              Let's Connect
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mx-auto mb-6"></div>
+            <p className="text-xl text-gray-300 font-light">
+              SNSで最新の作品や活動をチェックしてください
+            </p>
+          </div>
+          
+          <div className="flex justify-center flex-wrap gap-6">
             {[
-              { name: 'Twitter', icon: '🐦', color: 'from-blue-400 to-blue-600' },
-              { name: 'Instagram', icon: '📷', color: 'from-pink-400 to-purple-600' },
-              { name: 'Discord', icon: '💬', color: 'from-indigo-400 to-purple-600' },
-              { name: 'YouTube', icon: '📺', color: 'from-red-400 to-pink-600' }
-            ].map((social) => (
+              { name: 'Twitter', icon: '🐦', color: 'from-cyan-400/20 to-blue-500/20', hoverColor: 'hover:from-cyan-400 hover:to-blue-500' },
+              { name: 'Instagram', icon: '📷', color: 'from-purple-400/20 to-pink-500/20', hoverColor: 'hover:from-purple-400 hover:to-pink-500' },
+              { name: 'Discord', icon: '💬', color: 'from-indigo-400/20 to-purple-500/20', hoverColor: 'hover:from-indigo-400 hover:to-purple-500' },
+              { name: 'YouTube', icon: '📺', color: 'from-red-400/20 to-pink-500/20', hoverColor: 'hover:from-red-400 hover:to-pink-500' }
+            ].map((social, index) => (
               <a
                 key={social.name}
                 href="#"
-                className={`group w-16 h-16 bg-gradient-to-r ${social.color} rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all duration-300 hover:shadow-lg hover:shadow-current/25`}
+                className={`group relative w-20 h-20 bg-gradient-to-r ${social.color} ${social.hoverColor} border border-white/20 rounded-2xl flex items-center justify-center text-3xl transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <span className="group-hover:animate-bounce">{social.icon}</span>
+                <span className="group-hover:animate-bounce transition-transform duration-300 filter group-hover:brightness-110">
+                  {social.icon}
+                </span>
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
+                  {social.name}
+                </div>
               </a>
             ))}
           </div>

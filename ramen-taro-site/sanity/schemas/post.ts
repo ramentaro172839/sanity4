@@ -18,8 +18,37 @@ export const post = defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        slugify: input => input
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w\-]+/g, '')
+          .replace(/\-\-+/g, '-')
+          .replace(/^-+/, '')
+          .replace(/-+$/, '')
+          .slice(0, 96)
       },
-      validation: Rule => Rule.required()
+      validation: Rule => Rule.required().custom((slug) => {
+        if (!slug || !slug.current) {
+          return 'スラッグは必須です'
+        }
+        
+        // URLやプロトコルが含まれていないかチェック
+        if (slug.current.includes('http://') || slug.current.includes('https://') || slug.current.includes('://')) {
+          return 'スラッグにはURLを含めることはできません。短いパス名を入力してください（例: hamcup-story）'
+        }
+        
+        // スラッシュが含まれていないかチェック
+        if (slug.current.includes('/')) {
+          return 'スラッグにはスラッシュ（/）を含めることはできません'
+        }
+        
+        // 適切な形式かチェック
+        if (!/^[a-z0-9-]+$/.test(slug.current)) {
+          return 'スラッグは小文字の英数字とハイフンのみ使用できます'
+        }
+        
+        return true
+      })
     }),
     defineField({
       name: 'excerpt',
