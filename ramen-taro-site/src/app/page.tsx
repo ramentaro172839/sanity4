@@ -1,8 +1,102 @@
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import Link from "next/link";
+import { client } from "../../lib/sanity";
+import { formatDate, formatShortDate, getValidDate } from "../utils/dateFormatter";
 
-export default function Home() {
+// スラッグを正規化する関数
+function normalizeSlug(slug: string): string {
+  if (!slug) return 'untitled';
+  
+  // URLが含まれている場合の処理を強化
+  if (slug.includes('://')) {
+    try {
+      const url = new URL(slug);
+      const pathname = url.pathname;
+      
+      // /blog/ プレフィックスを除去
+      if (pathname.startsWith('/blog/')) {
+        return pathname.replace('/blog/', '');
+      }
+      
+      // 最後のパス部分を抽出
+      const parts = pathname.split('/').filter(Boolean);
+      return parts[parts.length - 1] || 'untitled';
+    } catch (error) {
+      console.error('Invalid URL in slug:', slug);
+      // URLの解析に失敗した場合、最後の部分を抽出
+      const parts = slug.split('/');
+      return parts[parts.length - 1] || 'untitled';
+    }
+  }
+  
+  // 通常のパス形式の場合
+  if (slug.startsWith('/blog/')) {
+    return slug.replace('/blog/', '');
+  }
+  
+  // スラッシュが含まれている場合、最後の部分を抽出
+  if (slug.includes('/')) {
+    const parts = slug.split('/').filter(Boolean);
+    return parts[parts.length - 1] || 'untitled';
+  }
+  
+  // 既に正規化されている場合はそのまま返す
+  return slug;
+}
+
+interface Post {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  excerpt: string;
+  featuredImage?: {
+    asset: {
+      url: string;
+    };
+    alt?: string;
+  };
+  publishedAt: string;
+  _createdAt: string;
+  _updatedAt: string;
+}
+
+async function getLatestPosts(): Promise<Post[]> {
+  const query = `
+    *[_type == "post" && isPublished == true && defined(slug.current)] | order(publishedAt desc)[0...3] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      featuredImage {
+        asset-> {
+          url
+        },
+        alt
+      },
+      publishedAt,
+      _createdAt,
+      _updatedAt
+    }
+  `;
+  
+  try {
+    return await client.fetch(query, {}, { 
+      next: { 
+        revalidate: 60, // 60秒でキャッシュ更新
+        tags: ['posts'] 
+      } 
+    });
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const latestPosts = await getLatestPosts();
   return (
     <Layout>
       {/* ヒーローセクション - プロクリエイター仕様 */}
@@ -243,67 +337,108 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* ブログ記事サンプル（実際にはSanityから取得） */}
-            {[1, 2, 3].map((item) => (
-              <article key={item} className="group relative">
-                <div className="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/25">
-                  <div className="h-48 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
-                    {/* 記事画像背景 */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    
-                    {/* 記事アイコン */}
-                    <div className="relative z-10 text-center">
-                      <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mb-4 mx-auto animate-glow">
-                        <span className="text-3xl">📝</span>
-                      </div>
-                      <span className="text-gray-300 text-lg font-medium">記事 {item}</span>
-                    </div>
-                    
-                    {/* 日付バッジ */}
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-purple-500/80 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                      1月{item}日
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-center text-sm text-purple-300 mb-3">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></div>
-                      <time>2025年1月{item}日</time>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
-                      ブログ記事タイトル {item}
-                    </h3>
-                    
-                    <p className="text-gray-400 leading-relaxed mb-4">
-                      記事の抜粋文がここに表示されます。読みやすい長さで切り取られます。
-                    </p>
-                    
-                    <div className="flex justify-between items-center">
-                      <Link
-                        href={`/blog/post-${item}`}
-                        className="group/link inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
-                      >
-                        続きを読む
-                        <svg className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+            {latestPosts.length > 0 ? (
+              latestPosts.map((post, index) => (
+                <article key={post._id} className="group relative">
+                  <div className="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/25">
+                    <div className="h-48 relative overflow-hidden">
+                      {post.featuredImage?.asset?.url ? (
+                        <Image
+                          src={post.featuredImage.asset.url}
+                          alt={post.featuredImage.alt || post.title}
+                          width={400}
+                          height={192}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="relative z-10 text-center">
+                            <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mb-4 mx-auto animate-glow">
+                              <span className="text-3xl">📝</span>
+                            </div>
+                            <span className="text-gray-300 text-lg font-medium">Article</span>
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       
-                      <div className="flex space-x-2">
-                        <span className="px-2 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full">
-                          Blog
-                        </span>
-                        <span className="px-2 py-1 text-xs bg-purple-500/20 text-purple-300 rounded-full">
-                          Article
-                        </span>
+                      {/* 日付バッジ */}
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-purple-500/80 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                        {formatShortDate(getValidDate(post.publishedAt, post._createdAt, post._updatedAt))}
+                      </div>
+                    </div>
+                    
+                    <div className="p-6">
+                      <div className="flex flex-col text-sm text-purple-300 mb-3 space-y-1">
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                          <span className="text-xs text-gray-400 mr-2">作成:</span>
+                          <time dateTime={getValidDate(post.publishedAt, post._createdAt, post._updatedAt)}>
+                            {formatDate(getValidDate(post.publishedAt, post._createdAt, post._updatedAt))}
+                          </time>
+                        </div>
+                        {post._updatedAt && post._updatedAt !== post._createdAt && (
+                          <div className="flex items-center">
+                            <div className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+                            <span className="text-xs text-gray-400 mr-2">更新:</span>
+                            <time dateTime={post._updatedAt}>
+                              {formatDate(post._updatedAt)}
+                            </time>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
+                        <Link href={`/blog/${normalizeSlug(post.slug.current)}`}>
+                          {post.title}
+                        </Link>
+                      </h3>
+                      
+                      <p className="text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                        {post.excerpt || '記事の抜粋文がここに表示されます。'}
+                      </p>
+                      
+                      <div className="flex justify-between items-center">
+                        <Link
+                          href={`/blog/${normalizeSlug(post.slug.current)}`}
+                          className="group/link inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
+                        >
+                          続きを読む
+                          <svg className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                        
+                        <div className="flex space-x-2">
+                          <span className="px-2 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full">
+                            Blog
+                          </span>
+                          <span className="px-2 py-1 text-xs bg-purple-500/20 text-purple-300 rounded-full">
+                            Article
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
+                </article>
+              ))
+            ) : (
+              /* 記事が見つからない場合のフォールバック */
+              <div className="col-span-full text-center py-20">
+                <div className="max-w-md mx-auto glass-dark rounded-2xl p-8">
+                  <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-float">
+                    <span className="text-4xl">📝</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    記事を準備中です
+                  </h3>
+                  <p className="text-gray-300 mb-8 leading-relaxed">
+                    現在ブログ記事を準備中です。もうしばらくお待ちください。
+                  </p>
                 </div>
-              </article>
-            ))}
+              </div>
+            )}
           </div>
           
           <div className="text-center mt-16">

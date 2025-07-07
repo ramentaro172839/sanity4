@@ -66,12 +66,6 @@ export default function Footer() {
                   プロフィール
                 </Link>
               </li>
-              <li>
-                <Link href="/studio" className="group text-gray-300 hover:text-white transition-colors duration-300 flex items-center">
-                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Studio
-                </Link>
-              </li>
             </ul>
           </div>
 
