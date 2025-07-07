@@ -14,17 +14,11 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-white/10 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 border-b border-white/10 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-20 relative">
           {/* ロゴ/サイトタイトル */}
-          <Link href="/" className="flex items-center group ml-0 sm:-ml-8 md:-ml-16 lg:-ml-24 xl:-ml-32">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-2xl animate-pulse">🍜</span>
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-ping"></div>
-            </div>
+          <Link href="/" className="flex items-center group ml-4 sm:ml-0 md:-ml-4 lg:-ml-8 xl:-ml-12">
             <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 group-hover:animate-gradient">
               らーめん太郎
             </h1>

@@ -111,10 +111,16 @@ export default async function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* プロフィールアバター */}
           <div className="mb-12 relative">
-            <div className="relative w-40 h-40 mx-auto mb-8">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1 animate-spin-slow">
-                <div className="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
-                  <span className="text-6xl animate-pulse">🍜</span>
+            <div className="relative w-48 h-48 mx-auto mb-8">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1">
+                <div className="w-full h-full rounded-full overflow-hidden">
+                  <Image
+                    src="/ramen-taro-character.jpg"
+                    alt="らーめん太郎キャラクター"
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -186,10 +192,16 @@ export default async function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* 左側：プロフィール画像 */}
             <div className="text-center lg:text-left">
-              <div className="relative w-80 h-80 mx-auto lg:mx-0 mb-8">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1 animate-float">
-                  <div className="w-full h-full bg-slate-900 rounded-3xl flex items-center justify-center">
-                    <span className="text-9xl animate-pulse">🍜</span>
+              <div className="relative w-96 h-96 mx-auto lg:mx-0 mb-8">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1">
+                  <div className="w-full h-full rounded-3xl overflow-hidden">
+                    <Image
+                      src="/ramen-taro-character.jpg"
+                      alt="らーめん太郎キャラクター"
+                      width={320}
+                      height={320}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-ping"></div>

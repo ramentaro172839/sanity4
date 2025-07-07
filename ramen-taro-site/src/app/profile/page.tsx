@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProfilePage() {
   return (
@@ -17,9 +18,15 @@ export default function ProfilePage() {
             {/* プロフィール画像 */}
             <div className="text-center lg:text-left">
               <div className="relative w-80 h-80 mx-auto lg:mx-0 mb-8">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1 animate-spin-slow">
-                  <div className="w-full h-full bg-slate-900 rounded-3xl flex items-center justify-center">
-                    <span className="text-9xl animate-pulse">🍜</span>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1">
+                  <div className="w-full h-full rounded-3xl overflow-hidden">
+                    <Image
+                      src="/ramen-taro-character.jpg"
+                      alt="らーめん太郎キャラクター"
+                      width={320}
+                      height={320}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-ping"></div>
@@ -131,7 +138,7 @@ export default function ProfilePage() {
                     <h3 className="text-2xl font-bold text-white mb-2">2025年</h3>
                     <h4 className="text-lg text-cyan-400 mb-3">公式サイト＆ブログ開設</h4>
                     <p className="text-gray-300">
-                      Next.jsとSanity CMSを使用した公式サイトを構築。
+                      Next.jsとSanity CMSを使用した公式サイトを構築。<br className="hidden sm:block" />
                       より多くの人に作品を届けるプラットフォームが完成。
                     </p>
                   </div>
@@ -149,8 +156,8 @@ export default function ProfilePage() {
                     <h3 className="text-2xl font-bold text-white mb-2">2024年</h3>
                     <h4 className="text-lg text-purple-400 mb-3">コミュニティ活動本格化</h4>
                     <p className="text-gray-300">
-                      HamCupDAOコミュニティでの創作活動が活発化。
-                      音声配信やコラボレーション作品の制作を開始。
+                      HamCupDAOコミュニティでの創作活動が活発化。<br className="hidden sm:block" />
+                      SunoAI音楽生成で音楽制作開始。
                     </p>
                   </div>
                 </div>
@@ -163,8 +170,9 @@ export default function ProfilePage() {
                     <h3 className="text-2xl font-bold text-white mb-2">2023年</h3>
                     <h4 className="text-lg text-green-400 mb-3">デジタルアート開始</h4>
                     <p className="text-gray-300">
-                      「らーめん太郎」としての活動をスタート。
-                      イラストレーションとデジタルアートの世界に足を踏み入れる。
+                      「らーめん太郎」としての活動をスタート。<br className="hidden sm:block" />
+                      ファンアートを描いて絵の楽しさに目覚める。<br className="hidden sm:block" />
+                      音声配信やファンアートイラスト作品の制作を開始。
                     </p>
                   </div>
                 </div>

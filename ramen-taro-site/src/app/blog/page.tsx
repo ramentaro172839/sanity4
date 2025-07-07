@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import { client } from "../../../lib/sanity";
+import { formatShortDate, getValidDate } from "../../utils/dateFormatter";
 
 // スラッグを正規化する関数
 function normalizeSlug(slug: string): string {
