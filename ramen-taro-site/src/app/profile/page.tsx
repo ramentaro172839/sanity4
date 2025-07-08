@@ -58,22 +58,6 @@ export default function ProfilePage() {
                   </p>
                 </div>
 
-                <div className="glass-dark rounded-2xl p-6">
-                  <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                    <span className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></span>
-                    Skills & Expertise
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {['Digital Art', 'Illustration', 'UI/UX Design', 'Creative Direction', 'Community Building'].map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/30 rounded-full text-sm font-medium hover:from-cyan-500/30 hover:to-purple-500/30 transition-all duration-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
 
                 <div className="glass-dark rounded-2xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-3 flex items-center">

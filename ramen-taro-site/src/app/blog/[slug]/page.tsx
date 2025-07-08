@@ -6,6 +6,7 @@ import ShareButton from "@/components/ShareButton";
 import { client } from "../../../../lib/sanity";
 import { PortableText } from 'next-sanity';
 import { formatDate, getValidDate } from "../../../utils/dateFormatter";
+import { getSanityImageUrl } from "../../../utils/imageUrl";
 
 // スラッグを正規化する関数
 function normalizeSlug(slug: string): string {
@@ -256,18 +257,22 @@ export default async function BlogPostPage({ params }: PageProps) {
                 components={{
                   types: {
                     image: ({ value }) => {
-                      const imageUrl = value?.asset?.url || value?.asset?._ref;
-                      if (!imageUrl) return null;
+                      const imageUrl = getSanityImageUrl(value);
+                      if (!imageUrl) {
+                        console.warn('Failed to generate image URL for:', value);
+                        return null;
+                      }
                       
                       return (
-                        <div className="my-12 relative group">
-                          <div className="rounded-2xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                        <div className="my-12 relative group w-full max-w-full">
+                          <div className="rounded-2xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500 w-full max-w-full">
                             <Image
                               src={imageUrl}
-                              alt={value?.alt || ''}
+                              alt={value?.alt || '画像'}
                               width={800}
                               height={400}
-                              className="w-full h-auto"
+                              className="w-full max-w-full h-auto object-contain"
+                              style={{ maxWidth: '100%', height: 'auto' }}
                             />
                           </div>
                           {value?.caption && (

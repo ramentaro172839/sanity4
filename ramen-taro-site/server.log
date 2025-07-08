@@ -652,3 +652,124 @@ Error: Route "/blog/[slug]" used `params.slug`. `params` should be awaited befor
  GET / 200 in 405ms
  GET /blog/hamcup-story 200 in 1662ms
  GET /profile 200 in 226ms
+ ✓ Compiled in 378ms
+ ✓ Compiled /profile in 110ms
+ GET /profile 200 in 1089ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 370ms
+ ✓ Compiled in 289ms
+ ✓ Compiled /profile in 133ms
+ GET /profile 200 in 806ms
+ GET / 200 in 468ms
+ GET /blog/hamcup-story 200 in 376ms
+ GET /api/manual-revalidate?key=manual-update 200 in 147ms
+ GET /favicon.ico 200 in 360ms
+ ⨯ Error: Invalid src prop (https://cdn.sanity.io/images/0d5afprf/production/70e8c322916e9838327504f15431a402cad13662-264x271.jpg) on `next/image`, hostname "cdn.sanity.io" is not configured under images in your `next.config.js`
+See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host
+    at Array.map (<anonymous>) {
+  digest: '3398617557'
+}
+ GET /blog/hamcup-story 500 in 2150ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 485ms
+ GET /favicon.ico 200 in 447ms
+ ⨯ Error: Invalid src prop (https://cdn.sanity.io/images/0d5afprf/production/70e8c322916e9838327504f15431a402cad13662-264x271.jpg) on `next/image`, hostname "cdn.sanity.io" is not configured under images in your `next.config.js`
+See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host
+    at Array.map (<anonymous>) {
+  digest: '3398617557'
+}
+ GET /blog/hamcup-story 500 in 898ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 528ms
+ GET /favicon.ico 200 in 495ms
+ GET /api/manual-revalidate?key=manual-update 200 in 147ms
+ GET /favicon.ico 200 in 332ms
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.11.9:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Compiled middleware in 368ms
+ ✓ Ready in 2.5s
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 8.1s
+ GET /blog/hamcup-story 200 in 10878ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 958ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 1287ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1999ms
+ GET / 200 in 2188ms
+ ✓ Compiled in 340ms
+ GET / 200 in 201ms
+ ✓ Compiled /blog/[slug] in 49ms
+ GET /blog/hamcup-story 200 in 339ms
+ GET /blog/hamcup-story 200 in 574ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 305ms
+ GET / 200 in 133ms
+ GET /blog/hamcup-story 200 in 166ms
+ GET /blog/hamcup-story 200 in 216ms
+ GET /blog/hamcup-story 200 in 183ms
+ ○ Compiling /api/manual-revalidate ...
+ ✓ Compiled /api/manual-revalidate in 970ms
+ GET /api/manual-revalidate?key=manual-update 200 in 1058ms
+ GET /favicon.ico 200 in 292ms
+TypeError: Invalid URL
+    at Array.map (<anonymous>) {
+  code: 'ERR_INVALID_URL',
+  input: 'image-70e8c322916e9838327504f15431a402cad13662-264x271-jpg'
+}
+ ⨯ Error: Failed to parse src "image-70e8c322916e9838327504f15431a402cad13662-264x271-jpg" on `next/image`, if using relative image it must start with a leading slash "/" or be an absolute URL (http:// or https://)
+    at Array.map (<anonymous>) {
+  digest: '3613781157'
+}
+ GET /blog/hamcup-story 500 in 1339ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 311ms
+ GET /favicon.ico 200 in 294ms
+ ✓ Compiled in 225ms
+ ✓ Compiled /blog/[slug] in 55ms
+TypeError: Invalid URL
+    at Array.map (<anonymous>) {
+  code: 'ERR_INVALID_URL',
+  input: 'image-70e8c322916e9838327504f15431a402cad13662-264x271-jpg'
+}
+ ⨯ Error: Failed to parse src "image-70e8c322916e9838327504f15431a402cad13662-264x271-jpg" on `next/image`, if using relative image it must start with a leading slash "/" or be an absolute URL (http:// or https://)
+    at Array.map (<anonymous>) {
+  digest: '1305092947'
+}
+ GET /blog/hamcup-story 500 in 789ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 381ms
+ GET /favicon.ico 200 in 272ms
+ ✓ Compiled in 398ms
+ ✓ Compiled /blog/[slug] in 65ms
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... src=... alt="画像" width={800} height=... className=... style=... onError={function onError}>
+                                                                               ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '141024792'
+}
+ GET /blog/hamcup-story 500 in 1369ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 359ms
+ GET /favicon.ico 200 in 332ms
+ ✓ Compiled in 270ms
+ ✓ Compiled /blog/[slug] in 56ms
+ ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <... src=... alt="画像" width={800} height=... className=... style=... onError={function onError}>
+                                                                               ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+    at stringify (<anonymous>) {
+  digest: '141024792'
+}
+ GET /blog/hamcup-story 500 in 1120ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 315ms
+ GET /favicon.ico 200 in 287ms
+ ✓ Compiled /blog/[slug] in 30ms
+ GET /blog/hamcup-story 200 in 541ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 339ms
+ GET /api/manual-revalidate?key=manual-update 200 in 98ms
+ GET / 200 in 1100ms
+ GET /blog/hamcup-story 200 in 725ms
