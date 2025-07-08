@@ -27,6 +27,13 @@ AI運用5原則
 - コードを書いた後にテストを実施する
 - 重要な指示は復唱する
 - コードを書いた後にレビューする
+- ローカルでビルドして動くのを確認してからpushして
+
+## コーディング原則
+
+- YAGNI（You Aren't Gonna Need It）：今必要じゃない機能は作らない
+- DRY（Don't Repeat Yourself）：同じコードを繰り返さない
+- KISS（Keep It Simple Stupid）：シンプルに保つ
 
 ---
 
