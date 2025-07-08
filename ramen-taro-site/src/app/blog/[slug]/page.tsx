@@ -7,6 +7,8 @@ import { client } from "../../../../lib/sanity";
 import { PortableText } from 'next-sanity';
 import { formatDate, getValidDate } from "../../../utils/dateFormatter";
 import { getSanityImageUrl } from "../../../utils/imageUrl";
+import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
 
 // スラッグを正規化する関数
 function normalizeSlug(slug: string): string {
@@ -33,6 +35,7 @@ interface Post {
     current: string;
   };
   excerpt: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: any[];
   featuredImage?: {
     asset: {
@@ -59,14 +62,14 @@ interface Post {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 async function getPost(slug: string): Promise<Post | null> {
   // まず正規化されたスラッグで検索
-  let query = `
+  const query = `
     *[_type == "post" && slug.current == $slug && isPublished == true && defined(slug.current)][0] {
       _id,
       title,
@@ -169,6 +172,55 @@ async function getRelatedPosts(postId: string, categories: string[]): Promise<Po
   }
 }
 
+// 動的メタデータ生成
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {
+      title: "記事が見つかりません",
+      description: "お探しの記事は見つかりませんでした。",
+    };
+  }
+
+  const ogImage = post.featuredImage?.asset?.url || "/ramen-taro-character.jpg";
+
+  return {
+    title: post.title,
+    description: post.excerpt || `らーめん太郎による「${post.title}」の記事です。`,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || `らーめん太郎による「${post.title}」の記事です。`,
+      type: "article",
+      publishedTime: post.publishedAt,
+      modifiedTime: post._updatedAt,
+      authors: ["らーめん太郎"],
+      tags: post.tags?.map(tag => tag.title) || [],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.featuredImage?.alt || post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt || `らーめん太郎による「${post.title}」の記事です。`,
+      images: [ogImage],
+    },
+    keywords: [
+      "らーめん太郎",
+      "ブログ",
+      ...(post.categories?.map(cat => cat.title) || []),
+      ...(post.tags?.map(tag => tag.title) || []),
+    ],
+  };
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPost(slug);
@@ -180,8 +232,23 @@ export default async function BlogPostPage({ params }: PageProps) {
   const categoryIds = post.categories?.map(cat => cat.slug.current) || [];
   const relatedPosts = await getRelatedPosts(post._id, categoryIds);
 
+  const currentUrl = `https://ramen-taro.com/blog/${slug}`;
+  
   return (
     <Layout>
+      <StructuredData 
+        type="blogPosting" 
+        data={{
+          title: post.title,
+          description: post.excerpt,
+          image: post.featuredImage?.asset?.url,
+          publishedAt: post.publishedAt,
+          updatedAt: post._updatedAt,
+          url: currentUrl,
+          keywords: post.tags?.map(tag => tag.title) || [],
+          categories: post.categories?.map(cat => cat.title) || [],
+        }}
+      />
       <article className="relative min-h-screen bg-white">
 
         {/* アイキャッチ画像 */}

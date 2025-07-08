@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { client } from "../../lib/sanity";
 import { formatDate, formatShortDate, getValidDate } from "../utils/dateFormatter";
+import StructuredData from "@/components/StructuredData";
 
 // スラッグを正規化する関数
 function normalizeSlug(slug: string): string {
@@ -22,7 +23,7 @@ function normalizeSlug(slug: string): string {
       // 最後のパス部分を抽出
       const parts = pathname.split('/').filter(Boolean);
       return parts[parts.length - 1] || 'untitled';
-    } catch (error) {
+    } catch {
       console.error('Invalid URL in slug:', slug);
       // URLの解析に失敗した場合、最後の部分を抽出
       const parts = slug.split('/');
@@ -99,6 +100,7 @@ export default async function Home() {
   const latestPosts = await getLatestPosts();
   return (
     <Layout>
+      <StructuredData type="website" />
       {/* ヒーローセクション - プロクリエイター仕様 */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         {/* 背景アニメーション */}
@@ -350,7 +352,7 @@ export default async function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {latestPosts.length > 0 ? (
-              latestPosts.map((post, index) => (
+              latestPosts.map((post) => (
                 <article key={post._id} className="group relative">
                   <div className="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/25">
                     <div className="h-48 relative overflow-hidden">

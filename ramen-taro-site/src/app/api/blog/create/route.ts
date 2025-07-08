@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
       .trim();
 
     // ブログ記事データの作成
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const postData: any = {
       _type: 'post',
       title,

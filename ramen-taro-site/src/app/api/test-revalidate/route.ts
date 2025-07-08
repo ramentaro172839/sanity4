@@ -1,7 +1,7 @@
 import { revalidateTag, revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // 開発環境でのみアクセス可能
     if (process.env.NODE_ENV !== 'development') {

@@ -1,6 +1,17 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "プロフィール",
+  description: "HamCupDAOコミュニティを中心に活動するクリエイティブデザイナー「らーめん太郎」のプロフィール。デジタルアート、イラスト制作の経歴や活動履歴をご紹介します。",
+  openGraph: {
+    title: "プロフィール | らーめん太郎",
+    description: "HamCupDAOコミュニティを中心に活動するクリエイティブデザイナー「らーめん太郎」のプロフィール。デジタルアート、イラスト制作の経歴や活動履歴をご紹介します。",
+    type: "profile",
+  },
+};
 
 export default function ProfilePage() {
   return (
@@ -81,7 +92,7 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex justify-center">
                 <Link
                   href="/blog"
                   className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 text-center"
@@ -89,9 +100,6 @@ export default function ProfilePage() {
                   <span className="relative z-10">作品を見る</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
                 </Link>
-                <button className="px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-2xl hover:bg-purple-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105">
-                  Contact
-                </button>
               </div>
             </div>
           </div>
@@ -179,7 +187,7 @@ export default function ProfilePage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-6 animate-gradient">
-              Let's Connect
+              Let&apos;s Connect
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mx-auto mb-6"></div>
             <p className="text-xl text-gray-300 font-light">

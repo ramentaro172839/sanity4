@@ -6,12 +6,6 @@ import { useState } from 'react'
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // メニューの外側をクリックした時にメニューを閉じる
-  const handleClickOutside = () => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false)
-    }
-  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 border-b border-white/10 backdrop-blur-xl">

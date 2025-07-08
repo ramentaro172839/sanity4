@@ -773,3 +773,194 @@ If you need interactivity, consider converting part of this to a Client Componen
  GET /api/manual-revalidate?key=manual-update 200 in 98ms
  GET / 200 in 1100ms
  GET /blog/hamcup-story 200 in 725ms
+ GET / 200 in 219ms
+ GET /blog/hamcup-story 200 in 209ms
+ GET /blog/hamcup-story 200 in 223ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 293ms
+ ✓ Compiled in 236ms
+ ✓ Compiled /blog/[slug] in 92ms
+ GET /blog/hamcup-story 200 in 1439ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 380ms
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 2.4s
+ GET /blog 200 in 3458ms
+ ✓ Compiled in 185ms
+ ✓ Compiled /blog in 46ms
+ GET /blog 200 in 343ms
+ GET /blog 200 in 112ms
+ GET /blog 200 in 102ms
+ GET /blog 200 in 579ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 389ms
+ GET /blog 200 in 330ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 336ms
+ ✓ Compiled in 190ms
+ ✓ Compiled /blog in 57ms
+ GET /blog 200 in 371ms
+ ✓ Compiled in 204ms
+ ✓ Compiled /blog in 61ms
+ GET /blog 200 in 422ms
+ ✓ Compiled in 197ms
+ ✓ Compiled /blog in 68ms
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /blog 200 in 499ms
+ GET /blog 200 in 155ms
+ GET /blog 200 in 149ms
+ ✓ Compiled in 214ms
+ ✓ Compiled /blog in 56ms
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /blog 200 in 318ms
+ GET /blog 200 in 162ms
+ GET /blog 200 in 176ms
+ ✓ Compiled in 165ms
+ ✓ Compiled /blog in 45ms
+ GET /blog 200 in 291ms
+ GET /blog 200 in 201ms
+ GET /blog 200 in 188ms
+ ✓ Compiled in 233ms
+ ✓ Compiled /blog in 48ms
+ GET /blog 200 in 320ms
+ ✓ Compiled in 169ms
+ GET /blog 200 in 126ms
+ ✓ Compiled in 188ms
+ GET /blog 200 in 148ms
+ ✓ Compiled in 180ms
+ GET /blog 200 in 148ms
+ ✓ Compiled in 301ms
+ GET /blog 200 in 138ms
+ ✓ Compiled in 165ms
+ GET /blog 200 in 112ms
+ ✓ Compiled in 328ms
+ GET /blog 200 in 120ms
+ ✓ Compiled middleware in 2ms
+ GET /blog 200 in 518ms
+ GET /blog 200 in 142ms
+ ✓ Compiled middleware in 1ms
+ GET /blog 200 in 372ms
+ GET /blog 200 in 200ms
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.11.10:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ✓ optimizeCss
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'swcMinify'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ✓ Compiled middleware in 391ms
+ ✓ Ready in 2.5s
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.11.10:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ✓ optimizeCss
+
+ ✓ Starting...
+ ✓ Compiled middleware in 403ms
+ ✓ Ready in 1993ms
+ ○ Compiling / ...
+ GET /blog 200 in 4462ms
+ ✓ Compiled / in 7.6s
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 954ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 1268ms
+ GET / 200 in 107ms
+ GET /blog 200 in 240ms
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 2.3s
+ GET /blog/hamcup-story 200 in 3905ms
+ GET /blog/hamcup-story 200 in 257ms
+ ○ Compiling /profile ...
+ ✓ Compiled /profile in 1384ms
+ GET /profile 200 in 1486ms
+ ✓ Compiled in 329ms
+ ✓ Compiled /profile in 59ms
+ GET /profile 200 in 397ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'
+}
+ ✓ Compiled in 252ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 2.7s
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.nhdp9jbmxm'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.nhdp9jbmxm'
+}
+[Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.i3dz69b6k6'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.i3dz69b6k6'
+}
+[Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.bjn6b0kmllw'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.bjn6b0kmllw'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.xa8gs7rya6'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.xa8gs7rya6'
+}
+[Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/profile/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.6lnx467mkut'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.6lnx467mkut'
+}
+[Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.bx5imeuojar'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/static/development/_buildManifest.js.tmp.bx5imeuojar'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/apple/Desktop/開発/sanity4/HomePage/ramen-taro-site/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'
+}
+ ✓ Compiled in 139ms
+ ✓ Compiled in 167ms
+ ✓ Compiled in 241ms
+ ✓ Compiled in 142ms
+ ✓ Compiled in 233ms
+ ✓ Compiled in 137ms
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.11.10:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Compiled middleware in 327ms
+ ✓ Ready in 1997ms

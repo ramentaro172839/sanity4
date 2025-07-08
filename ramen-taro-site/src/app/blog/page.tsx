@@ -3,6 +3,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { client } from "../../../lib/sanity";
 import { formatShortDate, getValidDate } from "../../utils/dateFormatter";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ブログ",
+  description: "らーめん太郎の日々の創作活動や思考を綴ったブログです。デジタルアート、イラスト制作、音声配信などの最新情報をお届けします。",
+  openGraph: {
+    title: "ブログ | らーめん太郎",
+    description: "らーめん太郎の日々の創作活動や思考を綴ったブログです。デジタルアート、イラスト制作、音声配信などの最新情報をお届けします。",
+    type: "website",
+  },
+};
 
 // スラッグを正規化する関数
 function normalizeSlug(slug: string): string {
@@ -22,7 +33,7 @@ function normalizeSlug(slug: string): string {
       // 最後のパス部分を抽出
       const parts = pathname.split('/').filter(Boolean);
       return parts[parts.length - 1] || 'untitled';
-    } catch (error) {
+    } catch {
       console.error('Invalid URL in slug:', slug);
       // URLの解析に失敗した場合、最後の部分を抽出
       const parts = slug.split('/');
@@ -59,6 +70,8 @@ interface Post {
     alt?: string;
   };
   publishedAt: string;
+  _createdAt: string;
+  _updatedAt: string;
   categories?: Array<{
     title: string;
     slug: {
@@ -82,6 +95,8 @@ async function getPosts(): Promise<Post[]> {
         alt
       },
       publishedAt,
+      _createdAt,
+      _updatedAt,
       categories[]-> {
         title,
         slug,
@@ -113,13 +128,8 @@ export default async function BlogPage() {
         <div className="relative z-10 py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="mb-8">
-                <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-float">
-                  <span className="text-4xl animate-pulse">📚</span>
-                </div>
-              </div>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-6">
-                Blog Articles
+                ブログ
               </h1>
               <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mx-auto mb-8"></div>
               <p className="text-2xl md:text-3xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-light">
