@@ -8,8 +8,8 @@ export default defineConfig({
   name: 'ramen-taro-site',
   title: 'らーめん太郎公式サイト',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: '0d5afprf',
+  dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
 

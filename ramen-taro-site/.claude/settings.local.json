@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run studio:*)",
+      "Bash(npm run:*)",
+      "Bash(node:*)",
+      "Bash(HOME=/tmp SANITY_CLI_UPDATE_CHECK=0 npx sanity start --port 3333)",
+      "Bash(HOME=/tmp SANITY_CLI_UPDATE_CHECK=0 npx sanity dev --port 3333)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}
