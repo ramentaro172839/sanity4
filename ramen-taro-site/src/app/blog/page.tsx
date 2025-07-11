@@ -83,7 +83,7 @@ interface Post {
 
 async function getPosts(): Promise<Post[]> {
   const query = `
-    *[_type == "post" && isPublished == true && defined(slug.current)] | order(publishedAt desc) {
+    *[_type == "post" && (!defined(isPublished) || isPublished == true) && defined(slug.current)] | order(publishedAt desc) {
       _id,
       title,
       slug,
@@ -97,6 +97,7 @@ async function getPosts(): Promise<Post[]> {
       publishedAt,
       _createdAt,
       _updatedAt,
+      isPublished,
       categories[]-> {
         title,
         slug,
