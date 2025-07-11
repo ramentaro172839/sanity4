@@ -102,6 +102,47 @@ export const post = defineType({
       title: '公開状態',
       type: 'boolean',
       initialValue: false
+    }),
+    defineField({
+      name: 'autoTagSuggestions',
+      title: '自動タグ提案',
+      type: 'object',
+      fields: [
+        {
+          name: 'lastAnalyzed',
+          title: '最終分析日時',
+          type: 'datetime'
+        },
+        {
+          name: 'confidence',
+          title: '提案信頼度',
+          type: 'number'
+        },
+        {
+          name: 'suggestedTags',
+          title: '提案されたタグ',
+          type: 'array',
+          of: [{ type: 'string' }]
+        }
+      ],
+      options: {
+        collapsible: true,
+        collapsed: true
+      }
+    }),
+    defineField({
+      name: 'autoTagged',
+      title: '自動タグ付け済み',
+      type: 'boolean',
+      readOnly: true,
+      hidden: true
+    }),
+    defineField({
+      name: 'autoTaggedAt',
+      title: '自動タグ付け日時',
+      type: 'datetime',
+      readOnly: true,
+      hidden: true
     })
   ],
   
