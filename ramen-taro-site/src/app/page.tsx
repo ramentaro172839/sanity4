@@ -6,6 +6,7 @@ import { client } from "../../lib/sanity";
 import { formatDate, formatShortDate, getValidDate } from "../utils/dateFormatter";
 import StructuredData from "@/components/StructuredData";
 import HomeClient from "@/components/HomeClient";
+import { PROFILE_INFO, HOME_SUBTITLE } from "@/constants/profile";
 
 // スラッグを正規化する関数
 function normalizeSlug(slug: string): string {
@@ -150,9 +151,12 @@ export default async function Home() {
 
           {/* サブタイトル */}
           <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-            HamCupDAOコミュニティを中心に活動するクリエイター。
-            <br className="hidden md:block" />
-            デジタルアートとイラストレーションで新しい世界を創造します。
+            {HOME_SUBTITLE.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                {index < HOME_SUBTITLE.split('\n').length - 1 && <br className="hidden md:block" />}
+              </React.Fragment>
+            ))}
           </p>
 
           {/* CTA ボタン */}
@@ -222,31 +226,29 @@ export default async function Home() {
               <div className="glass-dark rounded-2xl p-8 hover:bg-white/5 transition-all duration-300 transform hover:scale-105">
                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
                   <span className="w-4 h-4 bg-cyan-400 rounded-full mr-3 animate-pulse"></span>
-                  Creative Journey
+                  {PROFILE_INFO.creativeJourney.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  らーめん太郎は、HamCupDAOのコミュニティを中心に活動するクリエイティブデザイナーです。
-                </p>
-                <p className="text-gray-300 leading-relaxed">
-                  コミュニティでは、楽しくイラストを描いたり、音声配信をしたりと、
-                  日々創作活動を行っています。
-                </p>
+                {PROFILE_INFO.creativeJourney.descriptions.map((description, index) => (
+                  <p key={index} className="text-gray-300 leading-relaxed mb-4">
+                    {description}
+                  </p>
+                ))}
               </div>
               
               <div className="glass-dark rounded-2xl p-8 hover:bg-white/5 transition-all duration-300 transform hover:scale-105">
                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
                   <span className="w-4 h-4 bg-purple-400 rounded-full mr-3 animate-pulse"></span>
-                  Fun Facts
+                  {PROFILE_INFO.funFacts.title}
                 </h3>
                 <div className="space-y-3 text-gray-300">
-                  <div className="flex items-center">
-                    <span className="text-yellow-400 mr-3 text-xl">🍞</span>
-                    <span>名前は「らーめん太郎」ですが、実はパンが大好物</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-green-400 mr-3 text-xl">🎨</span>
-                    <span>このサイトでは、これまでに描いてきたたくさんの作品をご紹介</span>
-                  </div>
+                  {PROFILE_INFO.funFacts.items.map((fact, index) => (
+                    <div key={index} className="flex items-center">
+                      <span className={`mr-3 text-xl ${index === 0 ? 'text-yellow-400' : 'text-green-400'}`}>
+                        {fact.icon}
+                      </span>
+                      <span>{fact.text}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

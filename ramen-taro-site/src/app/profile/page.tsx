@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { PROFILE_INFO } from "@/constants/profile";
 
 export const metadata: Metadata = {
   title: "プロフィール",
@@ -64,8 +65,7 @@ export default function ProfilePage() {
                     About Me
                   </h3>
                   <p className="leading-relaxed">
-                    HamCupDAOコミュニティを中心に活動するクリエイティブデザイナー。
-                    デジタルアートとイラストレーションを通じて、新しい世界観の創造に取り組んでいます。
+                    {PROFILE_INFO.about.description}
                   </p>
                 </div>
 
@@ -73,21 +73,17 @@ export default function ProfilePage() {
                 <div className="glass-dark rounded-2xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
                     <span className="w-3 h-3 bg-purple-400 rounded-full mr-3 animate-pulse"></span>
-                    Fun Facts
+                    {PROFILE_INFO.funFacts.title}
                   </h3>
                   <ul className="space-y-2">
-                    <li className="flex items-center">
-                      <span className="text-yellow-400 mr-2">🍞</span>
-                      名前は「らーめん太郎」ですが、実はパンが大好物
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-green-400 mr-2">🎨</span>
-                      コミュニティでの創作活動が日々のインスピレーション
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-blue-400 mr-2">🎙️</span>
-                      音声配信を通じて創作について語ることも
-                    </li>
+                    {PROFILE_INFO.funFacts.items.map((fact, index) => (
+                      <li key={index} className="flex items-center">
+                        <span className={`mr-2 ${index === 0 ? 'text-yellow-400' : 'text-green-400'}`}>
+                          {fact.icon}
+                        </span>
+                        {fact.text}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -130,7 +126,8 @@ export default function ProfilePage() {
                     <h3 className="text-2xl font-bold text-white mb-2">2025年</h3>
                     <h4 className="text-lg text-cyan-400 mb-3">公式サイト＆ブログ開設</h4>
                     <p className="text-gray-300">
-                      Next.jsとSanity CMSを使用した公式サイトを構築。<br className="hidden sm:block" />
+                      Next.jsとSanity CMSを使用した、<br />
+                      らーめん太郎公式サイトを構築。<br />
                       より多くの人に作品を届けるプラットフォームが完成。
                     </p>
                   </div>
@@ -240,6 +237,22 @@ export default function ProfilePage() {
               </svg>
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
                 Discord
+              </div>
+            </a>
+
+            {/* SUNO */}
+            <a
+              href="https://suno.com/@ramentaro86"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-20 h-20 bg-gradient-to-r from-orange-400/20 to-red-500/20 hover:from-orange-400 hover:to-red-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-orange-400 hover:text-white"
+              style={{ animationDelay: '0.3s' }}
+            >
+              <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
+                SUNO
               </div>
             </a>
           </div>
