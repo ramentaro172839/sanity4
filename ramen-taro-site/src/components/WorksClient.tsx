@@ -126,12 +126,12 @@ export default function WorksClient() {
       {/* 年別フィルターセクション */}
       <section className="py-12 bg-gradient-to-b from-slate-900 to-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center space-x-4 mb-12">
+          <div className="flex justify-center space-x-2 sm:space-x-4 mb-12">
             {[2025, 2024, 2023].map((year) => (
               <button
                 key={year}
                 onClick={() => setSelectedYear(year as Year)}
-                className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 text-sm sm:text-base ${
                   selectedYear === year
                     ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg'
                     : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
@@ -155,14 +155,14 @@ export default function WorksClient() {
           </div>
 
           {artworks[selectedYear].length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {artworks[selectedYear].map((artwork) => (
                 <div key={artwork.id} className="group relative">
                   <div 
                     className="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/25 cursor-pointer"
                     onClick={() => setSelectedImage(artwork.image)}
                   >
-                    <div className="h-64 relative overflow-hidden">
+                    <div className="h-48 sm:h-56 md:h-64 relative overflow-hidden">
                       <Image
                         src={artwork.image}
                         alt={`${selectedYear}年の作品 #${artwork.id}`}
@@ -180,9 +180,9 @@ export default function WorksClient() {
                       </div>
                     </div>
                     
-                    <div className="p-4">
+                    <div className="p-3 sm:p-4">
                       <div className="flex flex-col items-center space-y-2">
-                        <div className="flex space-x-2">
+                        <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
                           <span className="px-3 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full">
                             イラスト
                           </span>
@@ -223,13 +223,13 @@ export default function WorksClient() {
       {/* 画像モーダル */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-2 sm:p-4"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-7xl max-h-full">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
+              className="absolute -top-8 sm:-top-12 right-0 text-white hover:text-gray-300 transition-colors z-10 p-2"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -244,7 +244,7 @@ export default function WorksClient() {
                 alt="フルサイズ表示"
                 width={1200}
                 height={800}
-                className="max-w-full max-h-[90vh] object-contain rounded-lg"
+                className="max-w-full max-h-[85vh] sm:max-h-[90vh] object-contain rounded-lg"
                 priority
               />
             </div>

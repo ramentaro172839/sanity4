@@ -11,6 +11,20 @@ export const metadata: Metadata = {
     title: "プロフィール | らーめん太郎",
     description: "HamCupDAOコミュニティを中心に活動するクリエイティブデザイナー「らーめん太郎」のプロフィール。デジタルアート、イラスト制作の経歴や活動履歴をご紹介します。",
     type: "profile",
+    images: [
+      {
+        url: "/images/ogp-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "HamCupDAO全員集合 - らーめん太郎のプロフィール",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "プロフィール | らーめん太郎",
+    description: "HamCupDAOコミュニティを中心に活動するクリエイティブデザイナー「らーめん太郎」のプロフィール。デジタルアート、イラスト制作の経歴や活動履歴をご紹介します。",
+    images: ["/images/ogp-image.jpg"],
   },
 };
 
@@ -26,10 +40,10 @@ export default function ProfilePage() {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* プロフィール画像 */}
             <div className="text-center lg:text-left">
-              <div className="relative w-80 h-80 mx-auto lg:mx-0 mb-8">
+              <div className="relative w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80 mx-auto lg:mx-0 mb-6 sm:mb-8">
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1">
                   <div className="w-full h-full rounded-3xl overflow-hidden">
                     <Image
@@ -49,10 +63,10 @@ export default function ProfilePage() {
             {/* プロフィール情報 */}
             <div className="space-y-8">
               <div>
-                <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4 animate-gradient">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4 animate-gradient">
                   らーめん太郎
                 </h1>
-                <p className="text-2xl text-gray-300 font-light tracking-wide">
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light tracking-wide">
                   Creative Designer & Digital Artist
                 </p>
                 <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mt-4"></div>
@@ -90,8 +104,8 @@ export default function ProfilePage() {
 
               <div className="flex justify-center">
                 <Link
-                  href="/blog"
-                  className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 text-center"
+                  href="/works"
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 text-center min-w-[140px]"
                 >
                   <span className="relative z-10">作品を見る</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
@@ -192,13 +206,13 @@ export default function ProfilePage() {
             </p>
           </div>
           
-          <div className="flex justify-center flex-wrap gap-6">
+          <div className="flex justify-center flex-wrap gap-4 sm:gap-6">
             {/* X (旧Twitter) */}
             <a
               href="https://x.com/@ramen_taro86"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-20 h-20 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 hover:from-cyan-400 hover:to-blue-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-cyan-400 hover:text-white"
+              className="group relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 hover:from-cyan-400 hover:to-blue-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-cyan-400 hover:text-white"
             >
               <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -213,7 +227,7 @@ export default function ProfilePage() {
               href="https://www.instagram.com/ramen_taro8686?igsh=d2F5Y2Ixd3BmYnBq&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-20 h-20 bg-gradient-to-r from-purple-400/20 to-pink-500/20 hover:from-purple-400 hover:to-pink-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-purple-400 hover:text-white"
+              className="group relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-purple-400/20 to-pink-500/20 hover:from-purple-400 hover:to-pink-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-purple-400 hover:text-white"
               style={{ animationDelay: '0.1s' }}
             >
               <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
@@ -229,7 +243,7 @@ export default function ProfilePage() {
               href="https://discord.gg/kvhCb8dYz2"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-20 h-20 bg-gradient-to-r from-indigo-400/20 to-purple-500/20 hover:from-indigo-400 hover:to-purple-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-indigo-400 hover:text-white"
+              className="group relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-indigo-400/20 to-purple-500/20 hover:from-indigo-400 hover:to-purple-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-indigo-400 hover:text-white"
               style={{ animationDelay: '0.2s' }}
             >
               <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
@@ -245,7 +259,7 @@ export default function ProfilePage() {
               href="https://suno.com/@ramentaro86"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-20 h-20 bg-gradient-to-r from-orange-400/20 to-red-500/20 hover:from-orange-400 hover:to-red-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-orange-400 hover:text-white"
+              className="group relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-orange-400/20 to-red-500/20 hover:from-orange-400 hover:to-red-500 border border-white/20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-white/40 glass-dark text-orange-400 hover:text-white"
               style={{ animationDelay: '0.3s' }}
             >
               <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">

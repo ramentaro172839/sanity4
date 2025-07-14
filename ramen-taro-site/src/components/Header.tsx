@@ -92,6 +92,15 @@ export default function Header() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
             <Link 
+              href="/works" 
+              className="group relative flex items-center px-6 py-4 text-white/90 hover:text-white font-medium transition-all duration-300 rounded-2xl hover:bg-white/10 mx-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <span className="w-8 h-8 mr-4 flex items-center justify-center text-2xl">🎨</span>
+              <span className="relative z-10 text-lg">作品ギャラリー</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
+            <Link 
               href="/profile" 
               className="group relative flex items-center px-6 py-4 text-white/90 hover:text-white font-medium transition-all duration-300 rounded-2xl hover:bg-white/10 mx-2"
               onClick={() => setIsMenuOpen(false)}

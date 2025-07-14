@@ -109,7 +109,7 @@ export default async function Home() {
     <Layout>
       <StructuredData type="website" />
       {/* ヒーローセクション - プロクリエイター仕様 */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         {/* 背景アニメーション */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -120,7 +120,7 @@ export default async function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* プロフィールアバター */}
           <div className="mb-12 relative">
-            <div className="relative w-48 h-48 mx-auto mb-8">
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto mb-6 sm:mb-8">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden">
                   <Image
@@ -138,11 +138,11 @@ export default async function Home() {
 
           {/* メインタイトル */}
           <div className="space-y-6 mb-12">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 leading-tight animate-gradient">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 leading-tight animate-gradient">
               らーめん太郎
             </h1>
             <div className="relative">
-              <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-light tracking-wide">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 font-light tracking-wide">
                 Creative Designer & Digital Artist
               </p>
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"></div>
@@ -150,7 +150,7 @@ export default async function Home() {
           </div>
 
           {/* サブタイトル */}
-          <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
             {HOME_SUBTITLE.split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -160,17 +160,17 @@ export default async function Home() {
           </p>
 
           {/* CTA ボタン */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
             <Link
-              href="/blog"
-              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 hover:rotate-1"
+              href="/works"
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 hover:rotate-1 min-w-[120px] text-center"
             >
               <span className="relative z-10">作品を見る</span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
             </Link>
             <Link
               href="/profile"
-              className="group px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-2xl hover:bg-purple-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105 hover:-rotate-1"
+              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-2xl hover:bg-purple-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105 hover:-rotate-1 min-w-[120px] text-center"
             >
               プロフィール
             </Link>
@@ -204,7 +204,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* 左側：プロフィール画像 */}
             <div className="text-center lg:text-left">
-              <div className="relative w-96 h-96 mx-auto lg:mx-0 mb-8">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto lg:mx-0 mb-6 sm:mb-8">
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1">
                   <div className="w-full h-full rounded-3xl overflow-hidden">
                     <Image
@@ -283,12 +283,12 @@ export default async function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {latestPosts.length > 0 ? (
               latestPosts.map((post) => (
                 <article key={post._id} className="group relative">
                   <div className="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/25">
-                    <div className="h-48 relative overflow-hidden">
+                    <div className="h-40 sm:h-44 md:h-48 relative overflow-hidden">
                       {post.featuredImage?.asset?.url ? (
                         <Image
                           src={post.featuredImage.asset.url}
@@ -316,7 +316,7 @@ export default async function Home() {
                       </div>
                     </div>
                     
-                    <div className="p-6">
+                    <div className="p-4 sm:p-5 md:p-6">
                       <div className="flex flex-col text-sm text-purple-300 mb-3 space-y-1">
                         <div className="flex items-center">
                           <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
@@ -336,13 +336,13 @@ export default async function Home() {
                         )}
                       </div>
                       
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
                         <Link href={`/blog/${normalizeSlug(post.slug.current)}`}>
                           {post.title}
                         </Link>
                       </h3>
                       
-                      <p className="text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 line-clamp-3">
                         {post.excerpt || '記事の抜粋文がここに表示されます。'}
                       </p>
                       
@@ -357,7 +357,7 @@ export default async function Home() {
                           </svg>
                         </Link>
                         
-                        <div className="flex space-x-2">
+                        <div className="flex flex-wrap gap-1 sm:gap-2">
                           <span className="px-2 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full">
                             Blog
                           </span>
@@ -391,7 +391,7 @@ export default async function Home() {
           <div className="text-center mt-16">
             <Link
               href="/blog"
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
             >
               <span className="relative z-10">すべての記事を見る</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
